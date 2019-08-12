@@ -1,12 +1,12 @@
-##Purpose of this application
+## Purpose of this application
 This application demonstrate basic usage Micrometer. In metrics we can see number of exhibits in Museum, visit time and number of entries. Prometheus use it to collect Metrics from application.
 
-##How to find metrics
+## How to find metrics
 After running app just enter [http://localhost:8080/actuator/prometheus](http://localhost:8080/actuator/prometheus)
 
 We can see there metrics from JVM, but also custom Metrics for Museum under tag "museum" ({name="museum",})
 
-##How to run application
+## How to run application
 **Note**: Basic knowledge of [Docker](https://www.docker.com/) is required
 
 1. Build jar file using maven
