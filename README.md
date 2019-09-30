@@ -13,11 +13,11 @@ We can see there metrics from JVM, but also custom Metrics for Museum under tag 
     - mvn clean install
     
 2. Build and run docker image with demo application
-    - docker build -t elenx/monitoring .
-    - docker run -d --name=monitoring -p 8080:8080 elenx/monitoring
+  - docker build -t elenx/monitoring .
+  - docker run -d --name=monitoring -p 8080:8080 elenx/monitoring
 
 3. Run prometheus:
-    - $ docker run -d --name=prometheus -p 9090:9090 -v <PATH_TO_prometheus.yml_FILE>:/etc/prometheus/prometheus.yml prom/prometheus --config.file=/etc/prometheus/prometheus.yml
+    - docker run -d --link monitoring:monitoring --name=prometheus -p 9090:9090 -v <PATH_TO_prometheus.yml_FILE>:/etc/prometheus/prometheus.yml prom/prometheus --config.file=/etc/prometheus/prometheus.yml
 
 4. See metrics
 Enter [http://localhost:9090/graph](http://localhost:9090/graph) to see metrics from application.
