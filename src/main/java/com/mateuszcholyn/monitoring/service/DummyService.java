@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static java.lang.Integer.parseInt;
+import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
+
 @Service
 public class DummyService extends MetricService {
 
@@ -16,20 +19,20 @@ public class DummyService extends MetricService {
     private final MetricFunction1<String, String> metricFunction1;
 
     public DummyService(MeterRegistry meterRegistry) {
-        super(meterRegistry, "Museum");
+        super(meterRegistry, "Dummy");
         registerGauge("number.actual.value", actualGeneratedNumber, AtomicInteger::get);
         this.metricFunction1 = createProxyFunction1(this::internalRandomNumber, "random.number");
     }
 
     public String randomNumber(String bound) {
-        return metricFunction1.callWithMetrics(bound);
+        return metricFunction1.callWithMetrics(randomNumeric(parseInt(bound)));
     }
 
     private String internalRandomNumber(String bound) {
-        int randomNumber = random.nextInt(Integer.parseInt(bound));
+        int randomNumber = random.nextInt(400);
         actualGeneratedNumber.set(randomNumber);
         uncheckedSleep(randomNumber);
-        return bound;
+        return randomNumeric(randomNumber);
     }
 
     private void uncheckedSleep(int randomNumber) {

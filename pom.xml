@@ -17,6 +17,7 @@
     <properties>
         <java.version>12</java.version>
         <vavr>0.10.2</vavr>
+        <commons.lang>3.9</commons.lang>
     </properties>
 
     <dependencies>
@@ -37,6 +38,12 @@
             <groupId>io.vavr</groupId>
             <artifactId>vavr</artifactId>
             <version>${vavr}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang}</version>
         </dependency>
 
 

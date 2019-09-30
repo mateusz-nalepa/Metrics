@@ -26,30 +26,4 @@ public class MonitoringConfiguration {
                 .getOrElse("localhost");
     }
 
-    @Bean
-    public MeterFilter meterFilter() {
-        return new MeterFilter() {
-            @Override
-            public MeterFilterReply accept(Meter.Id id) {
-                return metricsShouldBeBlocked(id)
-                        ? MeterFilterReply.DENY
-                        : MeterFilterReply.NEUTRAL;
-            }
-        };
-    }
-
-    private boolean metricsShouldBeBlocked(Meter.Id id) {
-        return !BLOCKED_METRICS
-                .filter(s -> id.getName().startsWith(s))
-                .isEmpty();
-    }
-
-    private static final List<String> BLOCKED_METRICS = API.List(
-            "tomcat",
-            "logback",
-            "jvm",
-            "process",
-            "system",
-            "http"
-    );
 }
