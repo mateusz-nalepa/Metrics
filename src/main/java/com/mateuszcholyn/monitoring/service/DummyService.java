@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static java.lang.Integer.parseInt;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 
 @Service
@@ -24,8 +23,8 @@ public class DummyService extends MetricService {
         this.metricFunction1 = createProxyFunction1(this::internalRandomNumber, "random.number");
     }
 
-    public String randomNumber(String bound) {
-        return metricFunction1.callWithMetrics(randomNumeric(parseInt(bound)));
+    public String randomNumber() {
+        return metricFunction1.callWithMetrics(randomNumeric(random.nextInt(400)));
     }
 
     private String internalRandomNumber(String bound) {

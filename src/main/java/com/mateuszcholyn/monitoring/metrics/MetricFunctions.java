@@ -1,6 +1,5 @@
 package com.mateuszcholyn.monitoring.metrics;
 
-import io.micrometer.core.instrument.Timer;
 import io.vavr.Function1;
 
 public interface MetricFunctions {
