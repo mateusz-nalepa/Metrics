@@ -17,7 +17,7 @@
     <properties>
         <java.version>12</java.version>
         <vavr>0.10.2</vavr>
-        <commons.lang>3.9</commons.lang>
+        <commons.lang>3.18.0</commons.lang>
     </properties>
 
     <dependencies>
